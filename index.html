@@ -10,24 +10,42 @@
 </head>
 <body>
     <div class="container">
-    <label for="steps" class="label">Steps</label>
+        <div class="btn-cont">
+        <button class="btn">
+            <div class="wrapper "> 
+                <svg class="arrow-down" width="16" height="15">
+                <use href="./images/arrow.svg#icon-arrow-down"></use>
+            </svg>
+        </div>
+           
+        </button>
+        <ul class="steps">
+
+        </ul>
+    </div>
+    <label for="steps" class="label">Steps
+        
+    </label>
+   
     <select name="steps" id="steps">
-    <!-- <option value="translation">Translation</option>
-    <option value="copywriting">Copywriting</option>
-    <option value="lqa">LQA</option>
-    <option value="dtp">DTP</option>
-    <option value="transcreation">TransCreation</option> -->
     </select>
 
-    <!-- <label for="unit" class="label">Unit</label>
-    <select name="unit" id="unit">
-   <option value="other">Other</option>
-    <option value="finance">Finance</option>
-    <option value="igaming">Igaming</option>
-    <option value="automotive">Automotive</option> 
-    </select> -->
+   <label for="unit" class="label">Unit</label>
+    <select name="unit" id="unit"> 
+    </select> 
+   
 
 </div>
+<div class="output-container">
+    <div class="output">
+        <p class="output-content">Step:</p>
+        <span class="step-value"></span>
+    </div>
+    <div class="output">
+        <p class="output-content">Unit:</p>
+        <span class="unit-value"></span>
+    </div>
+    </div>
 <script type="module" src="./js/options.js"></script>
 <script type="module" src="./js/api.js"></script>
 </body>

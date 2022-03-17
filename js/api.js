@@ -21,33 +21,79 @@ const refs = {
     steps: document.querySelector('#steps'),
     container: document.querySelector('.container'),
     unit: document.querySelector('#unit'),
+    stepValue: document.querySelector('.step-value'),
+    unitValue: document.querySelector('.unit-value'),
+    icon: document.querySelector('.arrow-down'),
+    btn: document.querySelector('.btn'),
+    stepsList: document.querySelector('.steps'),
 }
 
-
-
-const mapedArr = features.map(({title, calculationUnit}) => {
-    const options = [];
-    const markup = `<option value=${title}>${title}</option>`;
+// const stepsStr = features.map(({title, calculationUnit}) => {
+    
+//     const markup = `<option value=${title}>${title}</option>`;
    
-
+   
+//     return markup;
+// }).join('');
+const stepsStr = features.map(({title, calculationUnit}) => {
+    
+    const markup = `<li class=${title}>${title}</li>`;
+   
+   
     return markup;
 }).join('');
 // console.log(mapedArr);
-refs.steps.insertAdjacentHTML('beforeend', mapedArr);
+// refs.steps.insertAdjacentHTML('beforeend', stepsStr);
+refs.stepsList.insertAdjacentHTML('beforeend', stepsStr);
 
-const value = refs.steps.options[refs.steps.selectedIndex].value;
-console.log(value);
+refs.steps.addEventListener("change", setOutput);
+refs.btn.addEventListener("click", onSelectClick);
 
-// console.log(calculationUnit);
-// const unitsMarkup = calculationUnit.map(({type}) => {
-    
-//     options.push(type);
+function setOutput() {
+    refs.unitValue.textContent = "";
+    refs.stepValue.textContent = '';
+//   const selectedOptionValue = refs.steps.value;
+  const selectedOptionIndex = refs.steps.selectedIndex;
+  const selectedOptionText = refs.steps.options[selectedOptionIndex].text;
+  refs.stepValue.textContent = selectedOptionText;
+
+//   console.log(selectedOptionValue);
+  console.log(selectedOptionIndex);
+  console.log(selectedOptionText);
+
+const mapeArr = features.map(({title, calculationUnit}) => {
+    if(selectedOptionText === title) {
+        const options = [];
+        const type = calculationUnit.map(({type}) => {
+            options.push(type);
+            const units = options.map(option => {
+                const markup = `<option value=${option}>${option}</option>`;
+                return markup;
+            }).join('');
+            console.log(options);
+            
+            refs.unit.innerHTML = units;
+            refs.unit.addEventListener("change", setUnitOutput);
+           
+            
+        });
+        return;
+    }
+    const markup = `<option value=${title}>${title}</option>`;
    
-// });
-// console.log(options);
-// const optionsMarkup = options.map(option => {
-//     const optionEL = `<option value=${option}>${option}</option>`;
-// return optionEL;
-// }).join('');
+   
+    return markup;
+}).join('');
+   
+  }
+//   refs.steps.addEventListener("change", setUnitOutput);
+  function setUnitOutput() {
+    const selectedOptionIndex = refs.unit.selectedIndex;
+    const selectedOptionValue = refs.unit.options[selectedOptionIndex].text;
+            refs.unitValue.textContent = selectedOptionValue;
+  }
 
-// refs.unit.innerHTML = optionsMarkup;
+  function onSelectClick() {
+refs.icon.classList.toggle('js-transform');
+// refs.btn.textContent = "Hello"
+  }
