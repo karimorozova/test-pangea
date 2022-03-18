@@ -3,14 +3,18 @@ p, h1, h2, h3 {
     padding: 0;
 }
 
-
-.container {
-    padding: 50px 15px;
-    /* padding-left: 15px;
-    padding-right: 15px; */
-    /* text-align: center; */
+button {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: transparent;
+    width: 100%; 
 }
-
+.container {
+    display: flex;
+    margin-bottom: 50px;
+}
+  
 .label {
     position: relative;
     display: inline-block;
@@ -19,24 +23,16 @@ p, h1, h2, h3 {
     font-weight: 500;
 }
 
-#steps {
-    margin-right: 50px;
-}
 .btn {
-    position: relative;
+   
+    padding: 20px 0 20px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 200px;
     height: 50px;
 }
-select {
-    width: 200px;
-    height: 50px;
-    /* transform: rotateX(180deg); */
-}
-option {
-    position: absolute;
-    left: 0;
-    top: 100%;
-}
+
 .output-container {
     margin-top: 30px;
 }
@@ -56,21 +52,15 @@ option {
 .arrow-down {
     width: 20px;
     height: 20px;
-    /* top: 50%;
-    left: 50%;
-    transform: translateX(-50%);
-    transform: translateY(50%); */
-
-
+   
 }
 .wrapper {
     width: 40px;
     height: 40px;
     border: 1px solid black;
-    position: absolute;
-top: 50%;
-transform: translateY(-50%);
-right: 0;
+    display: inline-block;
+    margin-left: auto;
+
 display: flex;
 justify-content: center;
 align-items: center;
@@ -84,10 +74,37 @@ align-items: center;
     list-style: none;
     margin: 0;
     padding: 0;
-    /* width: 100%; */
-    text-align: center;
+}
+
+.units {
+    list-style: none;
+    margin: 0;
+    padding: 0; 
 }
 
 .btn-cont {
-    
+    width: 200px;
+    display: inline-block;
+}
+
+.btn-cont:not(:last-child) {
+    margin-right: 200px;
+}
+
+
+.steps-item {
+    height: 50px;
+    border: 1px solid grey;
+    text-align: center;
+}
+
+.is-hidden {
+    position: absolute;
+   width: 1px;
+   height: 1px;
+   margin: -1px;
+   padding: 0;
+   overflow: hidden;
+   border: 0;
+   clip: rect(0 0 0 0);
 }

@@ -10,31 +10,40 @@
 </head>
 <body>
     <div class="container">
+        <p class="label">Steps</p>
         <div class="btn-cont">
-        <button class="btn">
-            <div class="wrapper "> 
-                <svg class="arrow-down" width="16" height="15">
+        <button class="btn btn-1"> 
+           <div class="wrapper">
+                <svg class="arrow-down icon-1" width="16" height="15">
                 <use href="./images/arrow.svg#icon-arrow-down"></use>
             </svg>
         </div>
-           
         </button>
-        <ul class="steps">
+        
+
+        <ul class="steps is-hidden">
 
         </ul>
+   
     </div>
-    <label for="steps" class="label">Steps
+    <p class="label">Units</p>
+    <div class="btn-cont">
+        <button class="btn btn-2 is-hidden">Option
+           <div class="wrapper">
+                <svg class="arrow-down icon-2">
+                <use href="./images/arrow.svg#icon-arrow-down"></use>
+            </svg>
+        </div>
+        </button>
         
-    </label>
-   
-    <select name="steps" id="steps">
-    </select>
 
-   <label for="unit" class="label">Unit</label>
-    <select name="unit" id="unit"> 
-    </select> 
-   
+        <ul class="units is-hidden">
 
+        </ul>
+   
+    </div>
+  
+    
 </div>
 <div class="output-container">
     <div class="output">
@@ -46,7 +55,7 @@
         <span class="unit-value"></span>
     </div>
     </div>
-<script type="module" src="./js/options.js"></script>
+
 <script type="module" src="./js/api.js"></script>
 </body>
 </html>

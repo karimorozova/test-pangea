@@ -18,82 +18,74 @@ const features = [
 ]
 
 const refs = {
-    steps: document.querySelector('#steps'),
     container: document.querySelector('.container'),
-    unit: document.querySelector('#unit'),
     stepValue: document.querySelector('.step-value'),
     unitValue: document.querySelector('.unit-value'),
-    icon: document.querySelector('.arrow-down'),
-    btn: document.querySelector('.btn'),
+    icon: document.querySelector('.icon-1'),
+    btn: document.querySelector('.btn-1'),
     stepsList: document.querySelector('.steps'),
+    unitsBtn: document.querySelector('.btn-2'),
+    unitsList: document.querySelector('.units'),
+    icon2: document.querySelector('.icon-2'),
 }
 
-// const stepsStr = features.map(({title, calculationUnit}) => {
+const stepsStr = features.map(({title}) => {
     
-//     const markup = `<option value=${title}>${title}</option>`;
-   
-   
-//     return markup;
-// }).join('');
-const stepsStr = features.map(({title, calculationUnit}) => {
-    
-    const markup = `<li class=${title}>${title}</li>`;
+    const markup = `  <button><li class="steps-item">${title}</li></button>`;
    
    
     return markup;
 }).join('');
-// console.log(mapedArr);
-// refs.steps.insertAdjacentHTML('beforeend', stepsStr);
+
 refs.stepsList.insertAdjacentHTML('beforeend', stepsStr);
 
-refs.steps.addEventListener("change", setOutput);
-refs.btn.addEventListener("click", onSelectClick);
+refs.stepsList.addEventListener('click', onStepsListClick);
+refs.unitsList.addEventListener('click', onUnitsListClick)
+refs.btn.addEventListener("click", onStepsBtnClick);
+refs.unitsBtn.addEventListener("click", onUnitsBtnClick);
 
-function setOutput() {
-    refs.unitValue.textContent = "";
-    refs.stepValue.textContent = '';
-//   const selectedOptionValue = refs.steps.value;
-  const selectedOptionIndex = refs.steps.selectedIndex;
-  const selectedOptionText = refs.steps.options[selectedOptionIndex].text;
-  refs.stepValue.textContent = selectedOptionText;
 
-//   console.log(selectedOptionValue);
-  console.log(selectedOptionIndex);
-  console.log(selectedOptionText);
-
-const mapeArr = features.map(({title, calculationUnit}) => {
-    if(selectedOptionText === title) {
-        const options = [];
-        const type = calculationUnit.map(({type}) => {
-            options.push(type);
-            const units = options.map(option => {
-                const markup = `<option value=${option}>${option}</option>`;
-                return markup;
-            }).join('');
-            console.log(options);
-            
-            refs.unit.innerHTML = units;
-            refs.unit.addEventListener("change", setUnitOutput);
-           
-            
-        });
-        return;
-    }
-    const markup = `<option value=${title}>${title}</option>`;
-   
-   
-    return markup;
-}).join('');
-   
-  }
-//   refs.steps.addEventListener("change", setUnitOutput);
-  function setUnitOutput() {
-    const selectedOptionIndex = refs.unit.selectedIndex;
-    const selectedOptionValue = refs.unit.options[selectedOptionIndex].text;
-            refs.unitValue.textContent = selectedOptionValue;
-  }
-
-  function onSelectClick() {
+  function onStepsBtnClick() {
 refs.icon.classList.toggle('js-transform');
-// refs.btn.textContent = "Hello"
+refs.stepsList.classList.toggle('is-hidden');
+refs.unitsBtn.classList.add('is-hidden');
+  }
+
+  function onStepsListClick(e) {
+
+      refs.btn.textContent = e.target.textContent;
+      refs.stepsList.classList.add('is-hidden');
+      refs.unitsBtn.classList.remove('is-hidden');
+      refs.stepValue.textContent = e.target.textContent;
+      const mapeArr = features.map(({title, calculationUnit}) => {
+            if(e.target.textContent === title) {
+                const options = [];
+                const type = calculationUnit.map(({type}) => {
+                    options.push(type);
+                    const units = options.map(option => {
+                        const markup = `  <button><li class="steps-item">${option}</li></button>`;
+                        return markup;
+                    }).join('');
+                    // console.log(options);
+                    
+                    refs.unitsList.innerHTML = units;
+                    // refs.unit.addEventListener("change", setUnitOutput);
+                   
+                    
+                });
+                return;
+            }
+  })
+}
+
+  function onUnitsBtnClick() {
+    refs.icon2.classList.toggle('js-transform');
+    refs.unitsList.classList.toggle('is-hidden');
+  
+  }
+
+  function onUnitsListClick(e) {
+    refs.unitsBtn.textContent = e.target.textContent;
+    refs.unitsList.classList.add('is-hidden');
+    refs.unitValue.textContent = e.target.textContent;
   }
