@@ -27,6 +27,8 @@ const refs = {
     unitsBtn: document.querySelector('.btn-2'),
     unitsList: document.querySelector('.units'),
     icon2: document.querySelector('.icon-2'),
+    stepName: document.querySelector('.step-name'),
+    optionName: document.querySelector('.option-name'),
 }
 
 const stepsStr = features.map(({title}) => {
@@ -53,10 +55,11 @@ refs.unitsBtn.classList.add('is-hidden');
 
   function onStepsListClick(e) {
 
-      refs.btn.textContent = e.target.textContent;
+      refs.stepName.textContent = e.target.textContent;
       refs.stepsList.classList.add('is-hidden');
       refs.unitsBtn.classList.remove('is-hidden');
       refs.stepValue.textContent = e.target.textContent;
+      refs.icon.classList.remove('js-transform');
       const mapeArr = features.map(({title, calculationUnit}) => {
             if(e.target.textContent === title) {
                 const options = [];
@@ -85,7 +88,8 @@ refs.unitsBtn.classList.add('is-hidden');
   }
 
   function onUnitsListClick(e) {
-    refs.unitsBtn.textContent = e.target.textContent;
+    refs.optionName.textContent = e.target.textContent;
     refs.unitsList.classList.add('is-hidden');
     refs.unitValue.textContent = e.target.textContent;
+    refs.icon2.classList.remove('js-transform');
   }
