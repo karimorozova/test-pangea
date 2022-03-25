@@ -93,3 +93,4 @@ refs.unitsBtn.classList.add('is-hidden');
     refs.unitValue.textContent = e.target.textContent;
     refs.icon2.classList.remove('js-transform');
   }
+
